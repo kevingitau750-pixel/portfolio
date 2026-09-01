@@ -1,0 +1,58 @@
+[
+  {
+    "id": "16a641fa87d94c01a9df11f3384cbe03",
+    "kind": "headshot",
+    "stored_name": "df6644804b7c4a4aafda4daaa87ef669.jpg",
+    "original_name": "pp1.jpg",
+    "title": "Profile photo",
+    "issuer": "",
+    "year": "",
+    "project": "",
+    "note": "",
+    "size": 216016,
+    "is_image": true,
+    "uploaded_at": "2026-09-01T11:57:21+00:00"
+  },
+  {
+    "id": "0fd8558bdad34c14888eee70b850a5c1",
+    "kind": "resume",
+    "stored_name": "760efe7185154f9b97696acf7af9c299.pdf",
+    "original_name": "Kevin_Gitau_Resume_.pdf",
+    "title": "Résumé",
+    "issuer": "",
+    "year": "",
+    "project": "",
+    "note": "",
+    "size": 115060,
+    "is_image": false,
+    "uploaded_at": "2026-09-01T11:58:28+00:00"
+  },
+  {
+    "id": "fdd8bd6839654ab9bbdab1858b8f3a37",
+    "kind": "certificate",
+    "stored_name": "888d19b790ee4482942d59a43e1dc3de.pdf",
+    "original_name": "Ansys Associate Certification - Foundations in Stress Analysis using Ansys Mechanical (1).pdf",
+    "title": "Ansys Associate Certification",
+    "issuer": "Ansys",
+    "year": "2025",
+    "project": "",
+    "note": "",
+    "size": 7842266,
+    "is_image": false,
+    "uploaded_at": "2026-09-01T11:59:33+00:00"
+  },
+  {
+    "id": "108f4f52562147028252e84d8d20cb9d",
+    "kind": "certificate",
+    "stored_name": "a65d68cbf6084e94bb511b0a9f4787d6.pdf",
+    "original_name": "Certificate of Completion CubeSats .pdf",
+    "title": "CubeSat Training",
+    "issuer": "Agenzia Spatiale Italiana (ASI)",
+    "year": "2024",
+    "project": "",
+    "note": "",
+    "size": 1058940,
+    "is_image": false,
+    "uploaded_at": "2026-09-01T12:01:39+00:00"
+  }
+]

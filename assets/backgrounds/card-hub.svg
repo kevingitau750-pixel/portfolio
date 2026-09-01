@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#141f3d"/><stop offset="55%" stop-color="#243a70"/>
+      <stop offset="100%" stop-color="#3557a8"/>
+    </linearGradient>
+    <pattern id="g" width="26" height="26" patternUnits="userSpaceOnUse">
+      <path d="M26 0H0V26" fill="none" stroke="#ffffff" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="260" fill="url(#bg)"/>
+  <rect width="400" height="260" fill="url(#g)"/>
+  <g stroke="#cfe0ff" stroke-opacity="0.42" stroke-width="1.4" fill="none">
+    <path d="M200 62 V96 H126 V132 M200 96 H274 V132"/>
+    <path d="M126 132 V166 H92 V196 M126 166 H160 V196"/>
+    <path d="M274 132 V166 H240 V196 M274 166 H308 V196"/>
+  </g>
+  <rect x="168" y="44" width="64" height="22" rx="5" fill="#eaf1ff" fill-opacity="0.92"/>
+  <rect x="96" y="120" width="60" height="20" rx="4" fill="#c3d7ff" fill-opacity="0.72"/>
+  <rect x="244" y="120" width="60" height="20" rx="4" fill="#c3d7ff" fill-opacity="0.72"/>
+  <g fill="#a9c2f5" fill-opacity="0.55">
+    <rect x="68" y="188" width="48" height="16" rx="3"/>
+    <rect x="136" y="188" width="48" height="16" rx="3"/>
+    <rect x="216" y="188" width="48" height="16" rx="3"/>
+    <rect x="284" y="188" width="48" height="16" rx="3"/>
+  </g>
+  <g fill="#ffffff" fill-opacity="0.75">
+    <circle cx="126" cy="132" r="3"/><circle cx="274" cy="132" r="3"/>
+    <circle cx="200" cy="96" r="3.4"/>
+  </g>
+  <path d="M20 232 H380" fill="none" stroke="#9fc0ff" stroke-opacity="0.22" stroke-width="1.2" stroke-dasharray="4 6"/>
+</svg>

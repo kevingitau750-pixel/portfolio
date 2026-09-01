@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b2b45"/><stop offset="55%" stop-color="#14608c"/>
+      <stop offset="100%" stop-color="#2c9fc0"/>
+    </linearGradient>
+    <linearGradient id="atmo" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#9fe0ff" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#9fe0ff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="fpath" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.7"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="260" fill="url(#bg)"/>
+  <path d="M -60 340 A 300 300 0 0 1 460 268" fill="none" stroke="url(#atmo)" stroke-width="52"/>
+  <path d="M -60 340 A 300 300 0 0 1 460 268" fill="none" stroke="#d6f2ff" stroke-opacity="0.5" stroke-width="1.6"/>
+  <path d="M -10 210 C 80 176 168 122 300 74" fill="none" stroke="url(#fpath)" stroke-width="2"/>
+  <path d="M -10 240 C 110 208 210 152 340 104" fill="none" stroke="#ffffff" stroke-opacity="0.16" stroke-width="1.2" stroke-dasharray="5 7"/>
+  <g transform="translate(306 70) rotate(-20) scale(1.5)" fill="#f4fbff" fill-opacity="0.95">
+    <path d="M0 0 L-30 8 L-30 3 L-9 -3 L-22 -16 L-16 -17 L-1 -6 L14 -9 C19 -10 22 -8 22 -5 C22 -2 19 0 14 0 Z"/>
+  </g>
+  <g fill="#ffffff" fill-opacity="0.5">
+    <circle cx="80" cy="176" r="2.4"/><circle cx="168" cy="122" r="2.4"/>
+    <circle cx="52" cy="40" r="1.2"/><circle cx="150" cy="30" r="1"/><circle cx="340" cy="34" r="1.2"/>
+  </g>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="glowA" cx="78%" cy="8%" r="62%">
+      <stop offset="0%" stop-color="#7fb6e8" stop-opacity="0.30"/>
+      <stop offset="55%" stop-color="#a9cdf0" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="10%" cy="92%" r="55%">
+      <stop offset="0%" stop-color="#5fa8d8" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="limbL" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0b5fa5" stop-opacity="0"/>
+      <stop offset="35%" stop-color="#0b5fa5" stop-opacity="0.28"/>
+      <stop offset="70%" stop-color="#3fb1ce" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#0b5fa5" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="atmoL" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#89c2ea" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#89c2ea" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="arcL" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b5fa5" stop-opacity="0"/>
+      <stop offset="45%" stop-color="#0b5fa5" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#0b5fa5" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#glowA)"/>
+  <rect width="1600" height="1000" fill="url(#glowB)"/>
+
+  <!-- planetary limb, lower right -->
+  <g>
+    <path d="M -300 1180 A 1250 1250 0 0 1 2000 690" fill="none" stroke="url(#atmoL)" stroke-width="150"/>
+    <path d="M -300 1180 A 1250 1250 0 0 1 2000 690" fill="none" stroke="url(#limbL)" stroke-width="2.4"/>
+  </g>
+
+  <!-- orbital tracks -->
+  <g fill="none" stroke="url(#arcL)" stroke-width="1.6">
+    <ellipse cx="1180" cy="330" rx="760" ry="300" transform="rotate(-18 1180 330)"/>
+    <ellipse cx="1180" cy="330" rx="560" ry="205" transform="rotate(-18 1180 330)"/>
+    <ellipse cx="1180" cy="330" rx="960" ry="410" transform="rotate(-18 1180 330)"/>
+  </g>
+
+  <!-- great-circle flight arcs -->
+  <g fill="none" stroke="#0b5fa5" stroke-opacity="0.12" stroke-width="1.4" stroke-dasharray="7 9">
+    <path d="M -60 760 C 320 640 620 470 1000 380 S 1520 250 1700 190"/>
+    <path d="M -60 900 C 400 830 780 690 1120 540 S 1560 380 1700 340"/>
+  </g>
+
+  <!-- waypoint nodes -->
+  <g fill="#0b5fa5" fill-opacity="0.22">
+    <circle cx="1000" cy="380" r="3.2"/><circle cx="1120" cy="540" r="2.8"/>
+    <circle cx="620" cy="470" r="2.6"/><circle cx="320" cy="640" r="2.4"/>
+  </g>
+
+  <!-- sparse field -->
+  <g fill="#0b5fa5" fill-opacity="0.10">
+    <circle cx="180" cy="120" r="1.8"/><circle cx="420" cy="220" r="1.5"/>
+    <circle cx="700" cy="90" r="1.6"/><circle cx="960" cy="180" r="1.4"/>
+    <circle cx="1300" cy="120" r="1.7"/><circle cx="1480" cy="300" r="1.5"/>
+    <circle cx="120" cy="420" r="1.5"/><circle cx="260" cy="880" r="1.6"/>
+    <circle cx="1420" cy="760" r="1.5"/><circle cx="820" cy="880" r="1.4"/>
+  </g>
+</svg>

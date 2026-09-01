@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="hhAtmo" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="hhLimb" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08"/>
+      <stop offset="45%" stop-color="#ffffff" stop-opacity="0.50"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.10"/>
+    </linearGradient>
+    <linearGradient id="hhTrail" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="60%" stop-color="#ffffff" stop-opacity="0.34"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.62"/>
+    </linearGradient>
+    <radialGradient id="hhSun" cx="88%" cy="18%" r="40%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="320" fill="url(#hhSun)"/>
+
+  <!-- earth curvature at the bottom -->
+  <path d="M -220 620 A 900 900 0 0 1 1420 470" fill="none" stroke="url(#hhAtmo)" stroke-width="120"/>
+  <path d="M -220 620 A 900 900 0 0 1 1420 470" fill="none" stroke="url(#hhLimb)" stroke-width="2.2"/>
+
+  <!-- flight arcs -->
+  <g fill="none">
+    <path d="M -40 300 C 220 250 430 150 700 108 S 1080 52 1240 34"
+          stroke="url(#hhTrail)" stroke-width="2"/>
+    <path d="M -40 258 C 260 216 520 128 820 76 S 1140 22 1260 6"
+          stroke="#ffffff" stroke-opacity="0.14" stroke-width="1.3" stroke-dasharray="6 8"/>
+  </g>
+
+  <!-- aircraft silhouette on the lead arc -->
+  <g transform="translate(1046 60) rotate(-14) scale(1.15)" fill="#ffffff" fill-opacity="0.82">
+    <path d="M0 0 L-30 8 L-30 3 L-9 -3 L-22 -16 L-16 -17 L-1 -6 L14 -9 C19 -10 22 -8 22 -5 C22 -2 19 0 14 0 Z"/>
+  </g>
+
+  <!-- waypoints -->
+  <g fill="#ffffff" fill-opacity="0.55">
+    <circle cx="700" cy="108" r="2.8"/><circle cx="430" cy="150" r="2.2"/>
+    <circle cx="220" cy="250" r="2"/>
+  </g>
+
+  <!-- stars -->
+  <g fill="#ffffff" fill-opacity="0.26">
+    <circle cx="110" cy="52" r="1.3"/><circle cx="300" cy="34" r="1.1"/>
+    <circle cx="520" cy="60" r="1.2"/><circle cx="900" cy="150" r="1.1"/>
+    <circle cx="1120" cy="120" r="1.3"/><circle cx="60" cy="140" r="1"/>
+  </g>
+</svg>

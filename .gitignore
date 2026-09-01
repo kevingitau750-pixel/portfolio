@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+
+# Secrets — never commit
+.streamlit/secrets.toml
+
+# Private uploads: passport, ID, transcripts. Never committed, never deployed.
+uploads/private/

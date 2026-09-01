@@ -1,0 +1,42 @@
+# Portfolio theme — professional, aviation blue accent.
+# Both light and dark are defined, so visitors can switch in the app menu.
+
+[theme]
+base = "light"
+primaryColor = "#0B5FA5"
+font = "'Inter':https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+headingFont = "'Inter':https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap"
+codeFont = "'JetBrains Mono':https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
+baseRadius = "8px"
+buttonRadius = "8px"
+showWidgetBorder = true
+showSidebarBorder = true
+linkUnderline = false
+headingFontSizes = ["34px", "26px", "21px", "18px", "15px", "13px"]
+headingFontWeights = [600, 600, 600, 600, 500, 500]
+chartCategoricalColors = ["#0B5FA5", "#1A7F37", "#BF8700", "#8250DF", "#CF222E", "#57606A", "#3FB1CE"]
+
+[theme.light]
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F4F7FA"
+textColor = "#12222E"
+borderColor = "#D9E2EC"
+linkColor = "#0B5FA5"
+
+[theme.dark]
+primaryColor = "#4FA3E3"
+backgroundColor = "#0E1620"
+secondaryBackgroundColor = "#17222E"
+textColor = "#E6EDF3"
+borderColor = "#2A3947"
+linkColor = "#7CC0F0"
+
+[theme.light.sidebar]
+backgroundColor = "#F4F7FA"
+secondaryBackgroundColor = "#E9EFF5"
+borderColor = "#D9E2EC"
+
+[theme.dark.sidebar]
+backgroundColor = "#0B121A"
+secondaryBackgroundColor = "#17222E"
+borderColor = "#2A3947"

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="hnGlow" cx="76%" cy="46%" r="52%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="hnGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="320" fill="url(#hnGrid)"/>
+  <rect width="1200" height="320" fill="url(#hnGlow)"/>
+
+  <!-- system decomposition tree -->
+  <g stroke="#ffffff" stroke-opacity="0.26" stroke-width="1.3" fill="none">
+    <path d="M900 60 V100 H760 V140 M900 100 H1040 V140"/>
+    <path d="M760 140 V180 H680 V214 M760 180 H840 V214"/>
+    <path d="M1040 140 V180 H970 V214 M1040 180 H1112 V214"/>
+    <path d="M680 214 V252 M840 214 V252 M970 214 V252 M1112 214 V252"/>
+  </g>
+  <g fill="#ffffff">
+    <g fill-opacity="0.55">
+      <rect x="874" y="46" width="52" height="18" rx="4"/>
+      <rect x="734" y="126" width="52" height="16" rx="4"/>
+      <rect x="1014" y="126" width="52" height="16" rx="4"/>
+    </g>
+    <g fill-opacity="0.30">
+      <rect x="658" y="200" width="44" height="14" rx="3"/>
+      <rect x="818" y="200" width="44" height="14" rx="3"/>
+      <rect x="948" y="200" width="44" height="14" rx="3"/>
+      <rect x="1090" y="200" width="44" height="14" rx="3"/>
+    </g>
+    <g fill-opacity="0.65">
+      <circle cx="680" cy="252" r="3"/><circle cx="840" cy="252" r="3"/>
+      <circle cx="970" cy="252" r="3"/><circle cx="1112" cy="252" r="3"/>
+    </g>
+  </g>
+
+  <!-- signal bus sweeping left -->
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.16" stroke-width="1.4">
+    <path d="M -40 274 C 180 250 340 210 520 196 S 720 178 900 168"/>
+    <path d="M -40 306 C 200 288 400 258 600 238 S 820 214 960 206"/>
+  </g>
+  <g fill="#ffffff" fill-opacity="0.24">
+    <circle cx="180" cy="250" r="2"/><circle cx="520" cy="196" r="2.4"/>
+    <circle cx="600" cy="238" r="2"/><circle cx="200" cy="288" r="1.8"/>
+  </g>
+</svg>
