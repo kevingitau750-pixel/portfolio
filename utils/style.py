@@ -50,11 +50,14 @@ def _theme_type() -> str:
         return "light"
 
 
-def inject_global_style() -> None:
-    """Inject page artwork and component styles. Call once per run, from
-    ``streamlit_app.py``, before any page content."""
-    dark = _theme_type() == "dark"
+@lru_cache(maxsize=2)
+def _global_css(dark: bool) -> str:
+    """Build the full stylesheet for one theme.
 
+    Cached per theme: the blob embeds every background SVG as base64, so
+    rebuilding it on each rerun was pure repeated string work on a payload of
+    tens of kilobytes.
+    """
     art = _data_uri("page-dark.svg" if dark else "page-light.svg")
     grid = _data_uri("grid-dark.svg" if dark else "grid-light.svg")
 
@@ -62,14 +65,14 @@ def inject_global_style() -> None:
         sky = "linear-gradient(180deg, #0a121d 0%, #0e1826 45%, #0b1622 100%)"
         header_bg = "rgba(12, 20, 30, 0.72)"
         header_line = "rgba(124, 192, 240, 0.14)"
-        card_bg = "rgba(19, 29, 41, 0.86)"
+        card_bg = "#141d29"
         card_shadow = "0 1px 2px rgba(0, 0, 0, 0.35)"
         card_hover = "0 12px 30px rgba(0, 0, 0, 0.48)"
     else:
         sky = "linear-gradient(180deg, #eef4fb 0%, #fbfcfe 45%, #f4f8fd 100%)"
         header_bg = "rgba(255, 255, 255, 0.74)"
         header_line = "rgba(11, 95, 165, 0.10)"
-        card_bg = "rgba(255, 255, 255, 0.90)"
+        card_bg = "#ffffff"
         card_shadow = "0 1px 2px rgba(16, 40, 70, 0.07)"
         card_hover = "0 12px 30px rgba(16, 40, 70, 0.15)"
 
@@ -83,16 +86,27 @@ def inject_global_style() -> None:
         for name in CARD_ART
     )
 
-    st.html(
-        f"""
+    return f"""
 <style>
-/* ---------- Page canvas ---------- */
+/* ---------- Page canvas ----------
+   The artwork lives on a fixed pseudo-element rather than on the scrolling
+   container with `background-attachment: fixed`. Visually identical (the art
+   stays pinned to the viewport), but the browser can hand this to the
+   compositor as its own layer instead of repainting three background layers
+   on every scroll frame. */
 [data-testid="stAppViewContainer"] {{
-    background-image: url("{art}"), url("{grid}"), {sky};
-    background-size: cover, 44px 44px, cover;
-    background-position: center top, top left, center;
-    background-repeat: no-repeat, repeat, no-repeat;
-    background-attachment: fixed, fixed, fixed;
+    background: {sky};
+}}
+[data-testid="stAppViewContainer"]::before {{
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: url("{art}"), url("{grid}");
+    background-size: cover, 44px 44px;
+    background-position: center top, top left;
+    background-repeat: no-repeat, repeat;
 }}
 
 /* Wide layout, held to a comfortable measure and centred like a real site */
@@ -166,23 +180,35 @@ def inject_global_style() -> None:
 }}
 
 /* ---------- Cards ----------
-   Every bordered card carries a `card_` key, so it reads as a solid frosted
-   panel over the page artwork instead of letting it show through the text. */
+   Every bordered card carries a `card_` key, so it reads as a solid panel over
+   the page artwork instead of letting it show through the text. The background
+   is fully opaque rather than translucent-plus-`backdrop-filter`: the blur cost
+   scales with the number of cards on screen, and at 86-90% opacity there was
+   almost nothing showing through for it to blur. */
 [class*="st-key-card_"] {{
     background: {card_bg};
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     border-radius: 14px;
     box-shadow: {card_shadow};
-    transition: box-shadow 170ms ease, transform 170ms ease;
+    transition: transform 170ms ease;
 }}
 [class*="st-key-card_"]:hover {{
     box-shadow: {card_hover};
     transform: translateY(-2px);
 }}
+
+/* Honour the OS reduced-motion preference. */
+@media (prefers-reduced-motion: reduce) {{
+    [class*="st-key-card_"] {{ transition: none; }}
+    [class*="st-key-card_"]:hover {{ transform: none; }}
+}}
 </style>
-""",
-    )
+"""
+
+
+def inject_global_style() -> None:
+    """Inject page artwork and component styles. Call once per run, from
+    ``streamlit_app.py``, before any page content."""
+    st.html(_global_css(_theme_type() == "dark"))
 
 
 def hero(title: str, subtitle: str | None = None, *, key: str) -> None:

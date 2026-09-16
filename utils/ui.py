@@ -104,7 +104,10 @@ def resume_download_button(profile: dict, *, key: str) -> bool:
         return False
     st.download_button(
         "Download resume (PDF)",
-        data=path.read_bytes(),
+        # Cached: Streamlit reruns this script top-to-bottom on every widget
+        # interaction, so an uncached read reloaded the whole PDF into memory
+        # on every click anywhere on the page.
+        data=store.cached_bytes(path),
         file_name=filename,
         icon=":material/download:",
         type="primary",

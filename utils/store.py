@@ -23,6 +23,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import streamlit as st
+
 UPLOAD_ROOT = Path(__file__).resolve().parent.parent / "uploads"
 PUBLIC_DIR = UPLOAD_ROOT / "public"
 PRIVATE_DIR = UPLOAD_ROOT / "private"
@@ -56,15 +58,33 @@ def _index_path(visibility: str) -> Path:
     return _dir(visibility) / "index.json"
 
 
-def _read_index(visibility: str) -> list[dict[str, Any]]:
-    path = _index_path(visibility)
-    if not path.exists():
-        return []
+@st.cache_data(show_spinner=False)
+def _parse_index(path_str: str, stamp: tuple[float, int]) -> list[dict[str, Any]]:
+    """Parse an index file.
+
+    ``stamp`` is the file's (mtime, size). It is unused in the body and exists
+    only to form part of the cache key, so rewriting the index invalidates this
+    entry automatically. It must NOT be named with a leading underscore —
+    Streamlit excludes underscore-prefixed arguments from the cache key, which
+    would make this cache permanently stale.
+    """
+    del stamp
     try:
-        data = json.loads(path.read_text(encoding="utf-8"))
+        data = json.loads(Path(path_str).read_text(encoding="utf-8"))
     except (json.JSONDecodeError, OSError):
         return []
     return data if isinstance(data, list) else []
+
+
+def _read_index(visibility: str) -> list[dict[str, Any]]:
+    """Records for a store. Parsed once per version of the file on disk, not
+    once per Streamlit rerun — this runs several times on every page render."""
+    path = _index_path(visibility)
+    try:
+        stat = path.stat()
+    except OSError:
+        return []
+    return _parse_index(str(path), (stat.st_mtime, stat.st_size))
 
 
 def _write_index(visibility: str, records: list[dict[str, Any]]) -> None:
@@ -177,14 +197,48 @@ def latest_public(kind: str) -> dict[str, Any] | None:
     return found[0] if found else None
 
 
+@st.cache_resource(show_spinner=False)
+def _file_bytes(path_str: str, stamp: tuple[float, int]) -> bytes:
+    """Read a stored file once and hold it.
+
+    ``stamp`` is the file's (mtime, size) and exists only to key the cache, so
+    replacing the file re-reads it. As above, it must not start with an
+    underscore or Streamlit would drop it from the key.
+    """
+    del stamp
+    return Path(path_str).read_bytes()
+
+
+def cached_bytes(path: Path) -> bytes:
+    """Bytes of a stored file, read from disk only when the file changes.
+
+    Streamlit reruns the whole script on every interaction, so an uncached
+    ``read_bytes()`` on a large upload reloads it on every click.
+    """
+    stat = path.stat()
+    return _file_bytes(str(path), (stat.st_mtime, stat.st_size))
+
+
 def read_bytes(record: dict[str, Any], visibility: str = PUBLIC) -> bytes | None:
     path = path_for(record, visibility)
-    return path.read_bytes() if path else None
+    return cached_bytes(path) if path else None
+
+
+def _project_image_map() -> dict[str, Path]:
+    """Lowercased project title -> uploaded image path, newest upload winning.
+
+    Built once per render instead of rescanning the index for each card, which
+    made the Projects page O(projects x uploads).
+    """
+    mapping: dict[str, Path] = {}
+    for record in reversed(public_records("project")):
+        key = record.get("project", "").strip().lower()
+        path = path_for(record)
+        if key and path is not None:
+            mapping[key] = path
+    return mapping
 
 
 def project_image(project_title: str) -> Path | None:
     """Public image uploaded against a given project title, if any."""
-    for record in public_records("project"):
-        if record.get("project", "").strip().lower() == project_title.strip().lower():
-            return path_for(record)
-    return None
+    return _project_image_map().get(project_title.strip().lower())
