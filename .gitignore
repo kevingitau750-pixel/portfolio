@@ -9,3 +9,6 @@ venv/
 
 # Private uploads: passport, ID, transcripts. Never committed, never deployed.
 uploads/private/
+
+# audio_eval launcher environment
+.venv-audio/
