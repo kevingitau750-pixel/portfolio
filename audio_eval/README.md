@@ -16,7 +16,23 @@ notes** sheet listing what to double-check by ear.
 It is an *assistant*, not an oracle: listening tests are subjective, so the
 intended workflow is **tool drafts → you listen and confirm/override → export**.
 
-## Install
+## Quick start (no terminal needed)
+
+1. Download the repository as a ZIP and unzip it.
+2. Double-click the launcher in the top folder:
+   - **Windows:** `Start Audio Evaluation (Windows).bat`
+     (if Windows shows "Windows protected your PC", click *More info* → *Run anyway*)
+   - **Mac:** `Start Audio Evaluation (Mac).command`
+     (the first time: right-click → *Open* → *Open*, because it is not from the App Store)
+3. The first run installs everything (and Python itself on Windows if it is
+   missing), which takes a few minutes. Your browser then opens the app. Keep the
+   black window open while you work, and close it when you are done.
+4. In the app: upload the `.xlsx` → **Analyse** → listen to A and B for each row,
+   confirm or change the answers → **Download completed workbook**.
+
+The first **Analyse** also downloads the Whisper speech model once (~250 MB).
+
+## Install (manual)
 
 ```bash
 pip install -r audio_eval/requirements.txt
