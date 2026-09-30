@@ -27,7 +27,9 @@ portfolio/
 ├── uploads/
 │   ├── public/             # photo, résumé, certificates — commit this
 │   └── private/            # passport, ID — git-ignored, never published
-└── assets/
+├── assets/
+└── audio_eval/             # separate tool: TTS A/B listening-test assistant
+                            #   (own requirements + README; not part of the site)
     ├── backgrounds/        # generated SVGs used by style.py (edit colours there)
     └── ...                 # your images + resume.pdf (see assets/README.md)
 ```
