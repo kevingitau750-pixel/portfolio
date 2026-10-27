@@ -1,0 +1,15 @@
+{
+  "_comment": "Mock of what the wirelist generator reported, with element names. Deliberately misses the nested port eps.battery.telemetry to exercise the diff. Replace this with output read from the real generator spreadsheet.",
+  "subsystems": {
+    "EPS": {
+      "parts": ["batteryPack", "solarArray"],
+      "ports": ["powerOut"],
+      "connections": ["batToArray", "powerInterface"]
+    },
+    "ThermalControl": {
+      "parts": ["radiator", "heater"],
+      "ports": ["heatPort"],
+      "connections": ["radToHeater"]
+    }
+  }
+}

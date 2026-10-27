@@ -1,0 +1,2 @@
+# Only needed for reading the generator spreadsheet (from_spreadsheet).
+openpyxl>=3.1

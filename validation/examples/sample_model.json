@@ -1,0 +1,20 @@
+{
+  "_comment": "Mock parsed model in SysML v2 API element shape. Two subsystems under a package. EPS: 2 parts, 2 ports (one nested under a part), 2 connections. ThermalControl: 2 parts, 1 port, 1 connection.",
+  "elements": [
+    {"@id": "pkg", "@type": "Package", "name": "LunarLander", "owner": null},
+
+    {"@id": "eps", "@type": "PartUsage", "name": "EPS", "owner": {"@id": "pkg"}},
+    {"@id": "eps.battery", "@type": "PartUsage", "name": "batteryPack", "owner": {"@id": "eps"}},
+    {"@id": "eps.array", "@type": "PartUsage", "name": "solarArray", "owner": {"@id": "eps"}},
+    {"@id": "eps.powerOut", "@type": "PortUsage", "name": "powerOut", "owner": {"@id": "eps"}},
+    {"@id": "eps.battery.telemetry", "@type": "PortUsage", "name": "telemetry", "owner": {"@id": "eps.battery"}},
+    {"@id": "eps.c1", "@type": "ConnectionUsage", "name": "batToArray", "owner": {"@id": "eps"}},
+    {"@id": "eps.if1", "@type": "InterfaceUsage", "name": "powerInterface", "owner": {"@id": "eps"}},
+
+    {"@id": "tcs", "@type": "PartUsage", "name": "ThermalControl", "owner": {"@id": "pkg"}},
+    {"@id": "tcs.radiator", "@type": "PartUsage", "name": "radiator", "owner": {"@id": "tcs"}},
+    {"@id": "tcs.heater", "@type": "PartUsage", "name": "heater", "owner": {"@id": "tcs"}},
+    {"@id": "tcs.heatPort", "@type": "PortUsage", "name": "heatPort", "owner": {"@id": "tcs"}},
+    {"@id": "tcs.c1", "@type": "ConnectionUsage", "name": "radToHeater", "owner": {"@id": "tcs"}}
+  ]
+}
